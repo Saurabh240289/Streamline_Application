@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Push Docker Image') {
             steps {
-                sh 'docker login -u himanshitekade -p admin@123'
+                sh 'docker login -u himanshitekade -p <your_password>'
                 sh 'docker push himanshitekade/ht-streamlit-app'
             }
         }
