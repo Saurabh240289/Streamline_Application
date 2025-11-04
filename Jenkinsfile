@@ -3,24 +3,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/himanshitekade/Streamlit_Application.git'
+                git 'https://github.com/Saurabh240289/Streamline_Application.git'
+                
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t himanshitekade/ht-streamlit-app .'
+                sh 'docker build -t skulkarni24/sk-streamlit-app .'
             }
         }
         stage('Push Docker Image') {
             steps {
-                sh 'docker login -u himanshitekade -p <your_password>'
-                sh 'docker push himanshitekade/ht-streamlit-app'
+                sh 'docker login -u skulkarni24 -p Saurabh@240289!'
+                sh 'docker push skulkarni24/sk-streamlit-app'
             }
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker rm -f ht-streamlit-container || true'
-                sh 'docker run -d --name ht-streamlit-container -p 8501:8501 himanshitekade/ht-streamlit-app'
+                sh 'docker rm -f sk-streamlit-container || true'
+                sh 'docker run -d --name sk-streamlit-container -p 8501:8501 skulkarni24/sk-streamlit-app'
             }
         }
     }
